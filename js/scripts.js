@@ -7,18 +7,19 @@ let pokemonList = [
 ];
 console.log(pokemonList);
 
-// Loop through each Pokémon and write its name and height
+//Display Pokémon list with name, height, and conditional message with same loop
 for (let i = 0; i < pokemonList.length; i++) {
-  console.log(pokemonList[i].name + " (height: " + pokemonList[i].height + ")");
-  document.writeln(pokemonList[i].name + " (height: " + pokemonList[i].height + ") <br>");
-} 
+  let pokemon = pokemonList[i];
+  let output = pokemon.name + " (height: " + pokemon.height + ")";
 
-// Highlight if height is greater than 3
-for (let i = 0; i < pokemonList.length; i++) {
-    if(pokemonList[i].height > 3){
-        console.log(pokemonList[i].name + " (height: " + pokemonList[i].height + ") - Wow, that’s big!");
-    }
-} 
+  if (pokemon.height > 3) {
+    output += " - Wow, that’s big!";
+  }
+
+  console.log(output);
+  document.writeln(output + "<br>");
+}
+
 
 
 
