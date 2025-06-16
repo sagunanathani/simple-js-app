@@ -1,5 +1,6 @@
 // Define an array of Pokémon objects
 let pokemonList = [
+    //// pokemon objects
     {name: "Bulbasaur", height: 1, types: ['grass', 'poison']},
     {name: "Butterfree", height: 0.5, types: ['bug', 'fighting']},
     {name: "Ekans", height: 3.5, types: ['water', 'fairy']},
@@ -19,6 +20,8 @@ for (let i = 0; i < pokemonList.length; i++) {
   console.log(output);
   document.writeln(output + "<br>");
 }
+
+
 
 
 
