@@ -1,4 +1,74 @@
-  body {
-    font-family: sans-serif;
+/* General Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Body Styling */
+body {
+  background-color: #f9f9f9;
+  padding: 10px;
+}
+
+/* Heading */
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Unordered List */
+/* .pokemon-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 15px;
+  padding: 0;
+  max-width: 1000px;
+  margin: auto;
+} */
+
+.pokemon-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;  /* Align items to the left inside the box */
+  gap: 10px;
+  padding: 10px;
+  max-width: 500px;
+  margin-left: 20px;        /* Push the box in from the left */
+  background-color: #f9f9f9;
+  /* border: 2px solid black;
+  border-radius: 5px; */
+}
+
+/* Button Styling */
+.pokemon-button {
+  background-color: #1976d2;
+  color: white;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.pokemon-button:hover {
+  background-color: #1565c0;
+}
+
+/* Responsive Text */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .pokemon-button {
+    font-size: 0.9rem;
     padding: 10px;
   }
+}
