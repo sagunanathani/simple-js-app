@@ -4,21 +4,19 @@ let pokemonRepository = (function () {
   let pokemonList = [
     // load data from API
   ];
+  //create var for modal
   let modalContainer = document.querySelector("#modal-container");
 
   let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
 
   // REST OF CODE
-  function hideModal() {
-    modalContainer.classList.remove("is-visible");
-  }
-
   function showModal(title, text, img) {
     modalContainer.innerHTML = "";
 
     let modal = document.createElement("div");
     modal.classList.add("modal");
 
+    //will call the hideModal function when clicked
     let closeButtonElement = document.createElement("button");
     closeButtonElement.classList.add("modal-close");
     closeButtonElement.innerText = "Close";
@@ -30,11 +28,12 @@ let pokemonRepository = (function () {
     let contentElement = document.createElement("p");
     contentElement.innerText = text;
 
+    // Create an <img> element
     let imageElement = document.createElement("img");
     imageElement.setAttribute("src", img);
     imageElement.setAttribute("width", "304");
     imageElement.setAttribute("height", "228");
-    imageElement.setAttribute("alt", title + " image"); 
+    imageElement.setAttribute("alt", title + " image");
     imageElement.classList.add("modal-image");
 
     modal.appendChild(closeButtonElement);
@@ -45,6 +44,25 @@ let pokemonRepository = (function () {
 
     modalContainer.classList.add("is-visible");
   }
+
+  function hideModal() {
+    modalContainer.classList.remove("is-visible");
+  }
+  //modal is removed when the user presses the ESC key.
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modalContainer.classList.contains("is-visible")) {
+      hideModal();
+    }
+  });
+  //for the user to be able to remove the modal when the user clicks outside of the modal
+  modalContainer.addEventListener("click", (e) => {
+    // Since this is also triggered when clicking INSIDE the modal
+    // We only want to close if the user clicks directly on the overlay
+    let target = e.target;
+    if (target === modalContainer) {
+      hideModal();
+    }
+  });
 
   /*   function add(pokemon) {
     pokemonList.push(pokemon);
@@ -120,9 +138,10 @@ let pokemonRepository = (function () {
       });
   }
 
-  // when click on button see details in console
+  // Load Pokémon details and show in modal
   function showDetails(pokemon) {
     loadDetails(pokemon).then(function () {
+      // when click on button see details in console
       console.log("pokemonDetails:", pokemon);
       console.log(pokemon.name, pokemon.height, pokemon.imageUrl);
 

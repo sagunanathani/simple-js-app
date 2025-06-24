@@ -12,40 +12,48 @@ body {
   padding: 10px;
 }
 
+/* Pokedex Container */
+.pokedex-container {
+  max-width: 300px;
+  margin: 40px auto;
+  border: 2px solid #ccc;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
 /* Heading */
 h1 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   margin-bottom: 20px;
-  color: #333;
+  color: #000;
   text-align: center;
 }
 
-/* Unordered List */
- .pokemon-list {
+/* Unordered List (single column) */
+.pokemon-list {
   list-style: none;
-  display: grid;
-  /* grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); */
-  gap: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   padding: 0;
-  max-width: max-content;
-  margin: auto;
-} 
+}
 
-/* Button Styling */
+/* Pokémon Button Style */
 .pokemon-button {
-  background-color: #1976d2;
-  color: white;
-  padding: 12px 18px;
-  border: none;
-  border-radius: 10px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  background-color: #f1f1f1;
+  color: #000;
+  font-weight: bold;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
   width: 100%;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
 
 .pokemon-button:hover {
-  background-color: #1565c0;
+  background-color: #e0e0e0;
 }
 
 /* Responsive Text */
@@ -59,7 +67,6 @@ h1 {
     padding: 10px;
   }
 }
-
 #modal-container {
   display: none;
   position: fixed;
@@ -70,7 +77,9 @@ h1 {
   background-color: rgba(0, 0, 0, 0.5);
   justify-content: center;
   align-items: center;
+  padding: 20px; /* for small screens */
   z-index: 999;
+  overflow-y: auto;
 }
 
 #modal-container.is-visible {
@@ -81,13 +90,40 @@ h1 {
   background: white;
   padding: 20px;
   border-radius: 8px;
+  width: 100%;
   max-width: 400px;
   text-align: center;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
 }
+
+/* Make image inside modal responsive */
 .modal-image {
   max-width: 100%;
   height: auto;
   border-radius: 8px;
+  margin-top: 10px;
 }
+
+/* Responsive font and layout tweaks for small screens */
+@media (max-width: 480px) {
+  .modal {
+    padding: 16px;
+  }
+
+  .modal h1 {
+    font-size: 1.4rem;
+  }
+
+  .modal p {
+    font-size: 1rem;
+  }
+
+  .modal button {
+    font-size: 1rem;
+    padding: 8px 12px;
+    margin: 6px 4px;
+  }
+}
+
 
