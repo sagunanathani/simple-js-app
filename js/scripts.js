@@ -4,8 +4,47 @@ let pokemonRepository = (function () {
   let pokemonList = [
     // load data from API
   ];
+  let modalContainer = document.querySelector("#modal-container");
 
   let apiUrl = "https://pokeapi.co/api/v2/pokemon/?limit=150";
+
+  // REST OF CODE
+  function hideModal() {
+    modalContainer.classList.remove("is-visible");
+  }
+
+  function showModal(title, text, img) {
+    modalContainer.innerHTML = "";
+
+    let modal = document.createElement("div");
+    modal.classList.add("modal");
+
+    let closeButtonElement = document.createElement("button");
+    closeButtonElement.classList.add("modal-close");
+    closeButtonElement.innerText = "Close";
+    closeButtonElement.addEventListener("click", hideModal);
+
+    let titleElement = document.createElement("h1");
+    titleElement.innerText = title;
+
+    let contentElement = document.createElement("p");
+    contentElement.innerText = text;
+
+    let imageElement = document.createElement("img");
+    imageElement.setAttribute("src", img);
+    imageElement.setAttribute("width", "304");
+    imageElement.setAttribute("height", "228");
+    imageElement.setAttribute("alt", title + " image"); 
+    imageElement.classList.add("modal-image");
+
+    modal.appendChild(closeButtonElement);
+    modal.appendChild(titleElement);
+    modal.appendChild(contentElement);
+    modal.appendChild(imageElement);
+    modalContainer.appendChild(modal);
+
+    modalContainer.classList.add("is-visible");
+  }
 
   /*   function add(pokemon) {
     pokemonList.push(pokemon);
@@ -85,6 +124,16 @@ let pokemonRepository = (function () {
   function showDetails(pokemon) {
     loadDetails(pokemon).then(function () {
       console.log("pokemonDetails:", pokemon);
+      console.log(pokemon.name, pokemon.height, pokemon.imageUrl);
+
+      showModal(
+        pokemon.name,
+        "Height: " +
+          pokemon.height +
+          "\nTypes: " +
+          pokemon.types.map((t) => t.type.name).join(", "),
+        pokemon.imageUrl
+      );
     });
   }
 
@@ -99,20 +148,15 @@ let pokemonRepository = (function () {
 })();
 //console.log(pokemonList);
 //console.log('pokemonList:',pokemonRepository.getAll()); // [pokemonList]
+
 pokemonRepository.add({
-  name: "Pikachu",
+  /* name: "Pikachu",
   height: 0.6,
-  types: ["bug", "poison"],
+  types: ["bug", "poison"], */
 });
 console.log("pokemonList:", pokemonRepository.getAll()); // [ { name , height & types } ]
 
 //Display Pokémon list with forEach Loops
-pokemonRepository.loadList().then(function () {
-  pokemonRepository.getAll().forEach(function (pokemon) {
-    pokemonRepository.addListItem(pokemon);
-  });
-});
-
 pokemonRepository.loadList().then(function () {
   // Now the data is loaded!
   pokemonRepository.getAll().forEach(function (pokemon) {

@@ -17,32 +17,19 @@ h1 {
   font-size: 2rem;
   margin-bottom: 20px;
   color: #333;
+  text-align: center;
 }
 
 /* Unordered List */
-/* .pokemon-list {
+ .pokemon-list {
   list-style: none;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  /* grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); */
   gap: 15px;
   padding: 0;
-  max-width: 1000px;
+  max-width: max-content;
   margin: auto;
-} */
-
-.pokemon-list {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;  /* Align items to the left inside the box */
-  gap: 10px;
-  padding: 10px;
-  max-width: 500px;
-  margin-left: 20px;        /* Push the box in from the left */
-  background-color: #f9f9f9;
-  /* border: 2px solid black;
-  border-radius: 5px; */
-}
+} 
 
 /* Button Styling */
 .pokemon-button {
@@ -72,3 +59,35 @@ h1 {
     padding: 10px;
   }
 }
+
+#modal-container {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+#modal-container.is-visible {
+  display: flex;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.modal-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
