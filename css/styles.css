@@ -8,7 +8,7 @@
 
 /* Body Styling */
 body {
-  background-color: #f9f9f9;
+  background-color: orange;
   padding: 10px;
 }
 
@@ -31,15 +31,18 @@ h1 {
 
 /* Pokémon Button Style (custom override for Bootstrap .btn) */
 .pokemon-list .btn {
-  font-weight: bold;
-  padding: 12px;
-  width: 100%;
-  border-radius: 5px;
-  transition: background-color 0.2s ease;
+  background-color: #3b4cca; /* Pokémon blue */
+  color: #fff;
+  border: 2px solid #ffcb05; /* Pokémon yellow */
+  border-radius: 12px;
+  font-size: 1.1rem;
+  text-transform: capitalize;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
 }
-
 .pokemon-list .btn:hover {
-  background-color: #0069d9;
+  background-color: #2a57a5;
+  transform: scale(1.03);
 }
 
 /* Loading Message */
@@ -84,7 +87,6 @@ h1 {
     max-width: 80px;
   }
 }
-
 
 /* Responsive Text */
 @media (max-width: 600px) {
